@@ -66,52 +66,79 @@ class BST:
                 next_node = next_node.LeftChild
         return found_node
 
-    def DeleteNodeByKey(self, key):
-        for_delete = self.FindNodeByKey(key)
-        if for_delete.NodeHasKey is False:
+    def DeleteNodeByKey(self, key):  # complexity = 15
+        deleting_node = self.FindNodeByKey(key)
+
+        if deleting_node.NodeHasKey is False:
             return False
+        
+        has_left_child = deleting_node.Node.LeftChild is not None
+        has_right_child =  deleting_node.Node.RightChild is not None
+        has_parent = deleting_node.Node is self.Root
+        parent = deleting_node.Node.Parent
+        if has_parent :
+            is_left_child = parent.LeftChild is deleting_node.Node
 
-        if for_delete.Node.LeftChild is None and for_delete.Node.RightChild is None:
-            if for_delete.Node is self.Root:
-                self.Root = None
-                return True
-            parent_node = for_delete.Node.Parent
-            if parent_node.LeftChild is for_delete.Node:
-                parent_node.LeftChild = None
-            else:
-                parent_node.RightChild = None
+        if not(has_left_child or has_right_child) and not has_parent:
+            self.Root = None
             return True
 
-        if for_delete.Node.LeftChild is None or for_delete.Node.RightChild is None:
-            if for_delete.Node.LeftChild is None:
-                child_node = for_delete.Node.RightChild
-            else:
-                child_node = for_delete.Node.LeftChild
-            parent_node = for_delete.Node.Parent
-            child_node.Parent = parent_node
-            if parent_node is None:
-                self.Root = child_node
-                return True
-            if parent_node.LeftChild is for_delete.Node:
-                parent_node.LeftChild = child_node
-            else:
-                parent_node.RightChild = child_node
+        if not(has_left_child or has_right_child) and has_parent and is_left_child:            
+            parent.LeftChild = None
             return True
 
-        change_node = self.FinMinMax(for_delete.Node.RightChild, FindMax=False)
-        if change_node is not for_delete.Node.RightChild:
-            change_node.Parent.LeftChild = change_node.RightChild  # is None or node
-        change_node.LeftChild = for_delete.Node.LeftChild
+        if not(has_left_child or has_right_child) and has_parent and not is_left_child:    
+            parent.RightChild = None
+            return True
+
+        if has_left_child and not has_right_child and not has_parent:
+            child_node = deleting_node.Node.LeftChild
+            self.Root = child_node
+            return True
+
+        if has_left_child and not has_right_child and has_parent and is_left_child:
+            child_node = deleting_node.Node.LeftChild
+            child_node.Parent = parent
+            parent.LeftChild = child_node
+            return True
+
+        if has_left_child and not has_right_child and has_parent and not is_left_child:
+            child_node = deleting_node.Node.LeftChild
+            child_node.Parent = parent
+            parent.RightChild = child_node
+            return True
+
+        if not has_left_child and not has_right_child and not has_parent:
+            child_node = deleting_node.Node.RightChild
+            self.Root = child_node
+            return True
+
+        if not has_left_child and not has_right_child and has_parent and is_left_child:
+            child_node = deleting_node.Node.RightChild
+            child_node.Parent = parent
+            parent.LeftChild = child_node
+            return True
+
+        if not has_left_child and not has_right_child and has_parent and not is_left_child:
+            child_node = deleting_node.Node.RightChild
+            child_node.Parent = parent
+            parent.RightChild = child_node
+            return True
+
+        change_node = self.FinMinMax(deleting_node.Node.RightChild, FindMax=False)
+        if change_node is not deleting_node.Node.RightChild:
+            change_node.Parent.LeftChild = change_node.RightChild 
+        change_node.LeftChild = deleting_node.Node.LeftChild
         change_node.LeftChild.Parent = change_node
-        if for_delete.Node.RightChild is not change_node:
-            change_node.RightChild = for_delete.Node.RightChild
+        if deleting_node.Node.RightChild is not change_node:
+            change_node.RightChild = deleting_node.Node.RightChild
             change_node.RightChild.Parent = change_node
-        parent = for_delete.Node.Parent
+        parent = deleting_node.Node.Parent
         change_node.Parent = parent
         if parent is None:
             self.Root = change_node
             return True
-        if parent.LeftChild is for_delete.Node:
+        if parent.LeftChild is deleting_node.Node:
             parent.LeftChild = change_node
         else:
             parent.RightChild = change_node

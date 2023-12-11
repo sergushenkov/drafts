@@ -66,7 +66,7 @@ class BST:
                 next_node = next_node.LeftChild
         return found_node
 
-    def DeleteNodeByKey(self, key):  # complexity = 15
+    def DeleteNodeByKey(self, key):
         deleting_node = self.FindNodeByKey(key)
 
         if deleting_node.NodeHasKey is False:

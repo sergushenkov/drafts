@@ -15,7 +15,10 @@
     - [open_close.md](open_close.md) - открытые/закрытые классы
     - [reuse.md](reuse.md) - повторное использование модулей
     - [links.md](links.md) - связи между модулями
+    - [dynamic_linking.md](dynamic_linking.md) + [dynamic_linking.py](dynamic_linking.py) - динамическое связывание
 
 - FizzBuzz без условных операторов [fizzbuzz.py](fizzbuzz.py)
 
 - Фазз-тестинги [fuzz_testing.md](fuzz_testing.md)
+
+- Уровни программы [program_levels.md](program_levels.md)

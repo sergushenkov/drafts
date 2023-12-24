@@ -16,6 +16,7 @@
     - [reuse.md](reuse.md) - повторное использование модулей
     - [links.md](links.md) - связи между модулями
     - [dynamic_linking.md](dynamic_linking.md) + [dynamic_linking.py](dynamic_linking.py) - динамическое связывание
+    - [contravariance.md](contravariance.md)
 
 - FizzBuzz без условных операторов [fizzbuzz.py](fizzbuzz.py)
 

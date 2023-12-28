@@ -17,7 +17,7 @@
     - [links.md](links.md) - связи между модулями
     - [dynamic_linking.md](dynamic_linking.md) + [dynamic_linking.py](dynamic_linking.py) - динамическое связывание
     - [contravariance.md](contravariance.md)
-
+    - [general_any.py](general_any.py)
 - FizzBuzz без условных операторов [fizzbuzz.py](fizzbuzz.py)
 
 - Фазз-тестинги [fuzz_testing.md](fuzz_testing.md)

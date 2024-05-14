@@ -1,6 +1,4 @@
 from pymonad.tools import curry
-
-# from pymonad import Compose
 from pymonad.reader import Compose
 
 

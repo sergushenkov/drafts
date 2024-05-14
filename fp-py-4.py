@@ -2,11 +2,9 @@ from pymonad.tools import curry
 from pymonad.maybe import Just
 from pymonad.list import ListMonad
 
-
 @curry(2)
 def add(x, y):
     return x + y
-
 
 add10 = add(10)
 assert add10(20) == 30

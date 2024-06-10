@@ -10,7 +10,7 @@ let (.+.) x y =
 let (.-.) x y = 
     let (a, b, c) = x
     let (d, e, f) = y
-    let xx = (a, b, c).+. (-d, -e, -f)
+    (a, b, c).+. (-d, -e, -f)
 
 // 23.4.2
 let (.+) x y = 
@@ -24,8 +24,8 @@ let (.-) x y =
 let (.*) x y = 
     let (a, b) = x
     let (c, d) = y
-    (a, b) * (c, d) = (a*c - b*d, b*c + a*d)
+    (a*c - b*d, b*c + a*d)
 let (./) x y = 
     let (a, b) = y
-    z = (a/(a^2+b^2),-b/(a^2+b^2))
+    let z = (float a/(a*a + b*b), - float b/(a*a + b*b))
     x .* z

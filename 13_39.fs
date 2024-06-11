@@ -2,7 +2,7 @@
 let rmodd lst =
     let rec rmodd_rec (lst, res) =
         if lst = [] || List.tail lst = [] then res
-        else rmodd_rec (List.tail (List.tail lst), res @ [List.head lst])
+        else rmodd_rec (List.tail (List.tail lst), res @ [List.head (List.tail lst)])
     rmodd_rec (lst, [])
 
 // 39.2
@@ -20,7 +20,8 @@ let multiplicity x xs =
         let delta = if x = h then 1 else 0
         if t = [] then cnt + delta
         else multiplicity (x, t, cnt + delta)
-    multiplicity (x, xs, 0)
+    if xs = [] then 0 
+    else multiplicity (x, xs, 0)
 
 // 39.4
 let split lst =

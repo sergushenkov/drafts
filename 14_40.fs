@@ -50,19 +50,50 @@ let plus (xs1, xs2) =
     plus_r (xs1, xs2, [])
 
 // 40.2.5
-let rec minus (xs1, xs2) = ...
+let minus (xs1, xs2) = 
+    let rec minus_r (xs1, xs2, rez) = 
+        if xs2 = [] then List.append rez xs1
+        elif xs1 = [] then rez
+        elif (List.head xs1) = (List.head xs2) then  minus_r (List.tail xs1, xs2, rez)
+        elif (List.head xs1) < (List.head xs2) then  minus_r (List.tail xs1, xs2, List.append rez [List.head xs1])
+        else minus_r (xs1, List.tail xs2, rez)
+    minus_r (xs1, xs2, [])
 
 // 40.3.1
-let rec smallest = ...
+let smallest xs =
+    let rec smallest (xs, rez) =
+        if xs = [] then rez
+        elif List.head xs > rez then smallest (List.tail xs, List.head xs)
+        else smallest (List.tail xs, rez)
+    smallest (List.tail xs, List.head xs)    
 
 // 40.3.2
-let rec delete (n, xs) = ...
+let delete (n, xs) =
+    let rec delete_r (n, xs, rez) =
+        if xs = [] then rez
+        elif (List.head xs) = n then List.append rez (List.tail xs)
+        else delete_r (n, List.tail xs, List.append rez [List.head xs])
+    delete_r (n, xs, [])
 
 // 40.3.3
-let rec sort = ...
+let sort xs =
+    let rec sort_r (xs, rez) =
+        if xs = [] then rez
+        else
+            let n = smallest xs
+            sort_r (delete (n, xs), [n]::rez)
+    sort_r (xs, [])
 
 // 40.4
-let rec revrev = ...
+let revrev(xs) =
+    let rec rev_r (xs, rez) =
+        if xs = [] then rez
+        else rev_r (List.tail xs, List.append [List.head xs] rez)
+
+    let rec rev_rev_r (xs, rez) =
+        if xs = [] then rez
+        else rev_r (List.tail xs, List.append [ rev_r (List.head xs, []) ] rez)
+    rev_rev_r (xs, [])
 
 
   

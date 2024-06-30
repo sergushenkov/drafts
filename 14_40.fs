@@ -81,7 +81,7 @@ let sort (xs : int list) : int list=
         if xs = [] then rez
         else
             let n = smallest xs
-            sort_r (delete (n, xs), (List.append [n] rez))
+            sort_r (delete (n, xs), (List.append rez [n]))
     sort_r (xs, [])
 
 // 40.4

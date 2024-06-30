@@ -1,5 +1,5 @@
 // 40.1
-let sum (p, xs) = 
+let sum (p : int -> bool, xs : int list) : int= 
     let rec sum_r(p, xs, acc) =
         if xs = [] then acc
         elif p (List.head xs) then sum_r(p, List.tail xs, acc + List.head xs)
@@ -7,7 +7,7 @@ let sum (p, xs) =
     sum_r(p, xs, 0)
 
 // 40.2.1
-let count (xs, n) = 
+let count (xs : int list, n : int) : int = 
     let rec count_r(xs, n, cnt) =
         if xs = [] || (List.head xs) > n then cnt
         elif (List.head xs) = n then count_r(List.tail xs, n, cnt + 1)
@@ -15,7 +15,7 @@ let count (xs, n) =
     count_r(xs, n, 0)
 
 // 40.2.2
-let insert (xs, n) =
+let insert (xs : int list, n : int) : int list=
     let rec insert_r (xs, n, xs_new) =
         if xs = [] then List.append xs_new [n]
         elif (List.head xs) > n then List.concat [ xs_new; [n]; xs ]
@@ -23,7 +23,7 @@ let insert (xs, n) =
     insert_r (xs, n, [])
 
 // 40.2.3
-let intersect (xs1, xs2) = 
+let intersect (xs1 : int list, xs2 : int list) : int list = 
     let rec intersect_r (xs1, xs2, xs) = 
         if (List.head xs1) = (List.head xs2) then intersect_r (List.tail xs1, List.tail xs2, List.append xs [List.head xs1])
         elif xs1 = [] || xs2 = [] then xs
@@ -36,7 +36,7 @@ let intersect (xs1, xs2) =
     intersect_r (xs1, xs2, [])
 
 // 40.2.4
-let plus (xs1, xs2) =
+let plus (xs1 : int list, xs2 : int list) : int list=
     let rec plus_r (xs1, xs2, xs) =
         if xs1 = [] then List.append xs xs2
         elif xs2 = [] then List.append xs xs1
@@ -50,7 +50,7 @@ let plus (xs1, xs2) =
     plus_r (xs1, xs2, [])
 
 // 40.2.5
-let minus (xs1, xs2) = 
+let minus (xs1 : int list, xs2 : int list) : int list= 
     let rec minus_r (xs1, xs2, rez) = 
         if xs2 = [] then List.append rez xs1
         elif xs1 = [] then rez
@@ -60,7 +60,7 @@ let minus (xs1, xs2) =
     minus_r (xs1, xs2, [])
 
 // 40.3.1
-let smallest xs =
+let smallest (xs : int list) : int =
     let rec smallest (xs, rez) =
         if xs = [] then rez
         elif List.head xs > rez then smallest (List.tail xs, List.head xs)
@@ -68,7 +68,7 @@ let smallest xs =
     smallest (List.tail xs, List.head xs)    
 
 // 40.3.2
-let delete (n, xs) =
+let delete (n, xs : int list) : int list =
     let rec delete_r (n, xs, rez) =
         if xs = [] then rez
         elif (List.head xs) = n then List.append rez (List.tail xs)
@@ -76,7 +76,7 @@ let delete (n, xs) =
     delete_r (n, xs, [])
 
 // 40.3.3
-let sort xs =
+let sort (xs : int list) =
     let rec sort_r (xs, rez) =
         if xs = [] then rez
         else

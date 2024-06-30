@@ -63,12 +63,12 @@ let minus (xs1 : int list, xs2 : int list) : int list=
 let smallest (xs : int list) : int =
     let rec smallest (xs, rez) =
         if xs = [] then rez
-        elif List.head xs > rez then smallest (List.tail xs, List.head xs)
+        elif List.head xs < rez then smallest (List.tail xs, List.head xs)
         else smallest (List.tail xs, rez)
-    smallest (List.tail xs, List.head xs)    
+    smallest (List.tail xs, List.head xs)  
 
 // 40.3.2
-let delete (n, xs : int list) : int list =
+let delete (n : int, xs : int list) : int list =
     let rec delete_r (n, xs, rez) =
         if xs = [] then rez
         elif (List.head xs) = n then List.append rez (List.tail xs)

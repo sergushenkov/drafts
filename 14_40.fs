@@ -76,12 +76,12 @@ let delete (n : int, xs : int list) : int list =
     delete_r (n, xs, [])
 
 // 40.3.3
-let sort (xs : int list) =
+let sort (xs : int list) : int list=
     let rec sort_r (xs, rez) =
         if xs = [] then rez
         else
             let n = smallest xs
-            sort_r (delete (n, xs), [n]::rez)
+            sort_r (delete (n, xs), (List.append [n] rez))
     sort_r (xs, [])
 
 // 40.4

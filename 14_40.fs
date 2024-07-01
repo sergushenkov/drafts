@@ -88,11 +88,11 @@ let sort (xs : int list) : int list=
 let revrev(xs) =
     let rec rev_r (xs, rez) =
         if xs = [] then rez
-        else rev_r (List.tail xs, List.append [List.head xs] rez)
+        else rev_r (List.tail xs, List.append [List.head xs] rez )
 
     let rec rev_rev_r (xs, rez) =
         if xs = [] then rez
-        else rev_r (List.tail xs, List.append [ rev_r (List.head xs, []) ] rez)
+        else rev_rev_r (List.tail xs, List.append [rev_r(List.head xs, [])] rez)
     rev_rev_r (xs, [])
 
 

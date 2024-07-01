@@ -54,7 +54,7 @@ let minus (xs1 : int list, xs2 : int list) : int list=
     let rec minus_r (xs1, xs2, rez) = 
         if xs2 = [] then List.append rez xs1
         elif xs1 = [] then rez
-        elif (List.head xs1) = (List.head xs2) then  minus_r (List.tail xs1, xs2, rez)
+        elif (List.head xs1) = (List.head xs2) then  minus_r (List.tail xs1, List.tail xs2, rez)
         elif (List.head xs1) < (List.head xs2) then  minus_r (List.tail xs1, xs2, List.append rez [List.head xs1])
         else minus_r (xs1, List.tail xs2, rez)
     minus_r (xs1, xs2, [])

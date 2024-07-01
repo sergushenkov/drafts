@@ -25,8 +25,8 @@ let insert (xs : int list, n : int) : int list=
 // 40.2.3
 let intersect (xs1 : int list, xs2 : int list) : int list = 
     let rec intersect_r (xs1, xs2, xs) = 
-        if (List.head xs1) = (List.head xs2) then intersect_r (List.tail xs1, List.tail xs2, List.append xs [List.head xs1])
-        elif xs1 = [] || xs2 = [] then xs
+        if xs1 = [] || xs2 = [] then xs
+        elif (List.head xs1) = (List.head xs2) then intersect_r (List.tail xs1, List.tail xs2, List.append xs [List.head xs1])
         elif xs = [] && (List.head xs1) > (List.head xs2) then intersect_r (xs1, List.tail xs2, xs)
         elif xs = [] && (List.head xs1) < (List.head xs2) then intersect_r (List.tail xs1, xs2, xs)
         elif (List.head xs1) = (List.head xs) then intersect_r (List.tail xs1, xs2, List.append xs [List.head xs1])

@@ -60,9 +60,9 @@ let minus (xs1 : int list, xs2 : int list) : int list=
     minus_r (xs1, xs2, [])
 
 // 40.3.1
-let smallest (xs : int list) : int =
+let smallest (xs : int list) : int option =
     let rec smallest (xs, rez) =
-        if xs = [] then rez
+        if xs = [] then Some(rez)
         elif List.head xs < rez then smallest (List.tail xs, List.head xs)
         else smallest (List.tail xs, rez)
     smallest (List.tail xs, List.head xs)  
@@ -81,7 +81,7 @@ let sort (xs : int list) : int list=
         if xs = [] then rez
         else
             let n = smallest xs
-            sort_r (delete (n, xs), (List.append rez [n]))
+            sort_r (delete (n.Value, xs), (List.append rez [n.Value]))
     sort_r (xs, [])
 
 // 40.4

@@ -1,12 +1,12 @@
 // 47.4.1
-let factorial n =
+let f(n:int):int =
     let mutable result = 1
     for i = 1 to n do
         result <- result * i
     result
 
 // 47.4.2
-let fibo n = 
+let fibo(n:int):int = 
     if n = 1 then 0
     elif n = 2 then 1
     else

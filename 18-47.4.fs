@@ -7,12 +7,12 @@ let f(n:int):int =
 
 // 47.4.2
 let fibo(n:int):int = 
-    if n = 1 then 0
-    elif n = 2 then 1
+    if n = 0 then 0
+    elif n = 1 then 1
     else
         let mutable a = 0
         let mutable b = 1
-        for i = 3 to n do
+        for i = 2 to n do
             let c = a + b
             a <- b
             b <- c

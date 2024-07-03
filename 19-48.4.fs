@@ -15,8 +15,6 @@ let fibo2(n:int, с):int =
     fib_r n 0 1 id
 
 // 48.4.3
-let bigList n k =
-    let rec bigListHelper n acc =
-        if n = 0 then acc
-        else bigListHelper (n - 1) (1 :: acc)
-    bigListHelper n []
+let rec bigList(n, k) =
+  if n=0 then k []
+  else bigList (n-1) (fun res -> k(1::res))

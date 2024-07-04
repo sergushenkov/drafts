@@ -13,6 +13,7 @@ let rec fibo2(n:int, c):int =
     | _ -> fibo2(n-1, fun x -> fibo2(n-2, fun y -> c (x + y)))
 
 // 48.4.3
-let rec bigList n k =
-  if n=0 then k []
-  else bigList (n-1) (fun res -> k(1::res))
+let rec bigList (n:int, k) =
+    match n with
+    | 0 -> k []
+    | _ -> 1 :: bigList (n - 1, k)

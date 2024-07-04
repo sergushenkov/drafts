@@ -16,4 +16,4 @@ let rec fibo2 n c =
 let rec bigList n k =
     match n with
     | 0 -> k []
-    | _ -> 1 :: bigList (n - 1) k
+    | _ -> bigList (n-1) (fun res -> k(1::res))

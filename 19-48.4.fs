@@ -6,13 +6,11 @@ let rec fibo1(n:int, n1:int, n2:int):int =
     else fibo1(n - 1, n2 + n1, n1)
 
 // 48.4.2
-let fibo2(n:int, с):int =
-    let rec fib_r n a b с =
-        match n with
-        | 0 -> с a
-        | 1 -> с b
-        | _ -> fib_r (n - 1) b (a + b) с
-    fib_r n 0 1 id
+let rec fibo2(n:int, c):int =
+    match n with
+    | 0 -> c 0
+    | 1 -> c 1
+    | _ -> fibo2(n-1, fun x -> fibo2(n-2, fun y -> c (x + y)))
 
 // 48.4.3
 let rec bigList n k =

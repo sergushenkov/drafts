@@ -11,6 +11,6 @@ let seq_seq =
     seq {
         yield 0
         for i in 1 .. System.Int32.MaxValue do
-            yield i
             yield -i
+            yield i
     }

@@ -8,7 +8,7 @@ let fac_seq =
             if x <= 1 then a
             else f (x - 1) (a * x)
         f n 1
-    Seq.initInfinite (fun i -> i + 1)
+    Seq.initInfinite (fun i -> i)
     |> Seq.map factorial
     
 // 49.5.3

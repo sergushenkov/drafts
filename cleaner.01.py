@@ -69,4 +69,6 @@ if __name__ == "__main__":
         s = input()
         if s == "":
             break
-        print(cleaner.command(s))
+        rez = cleaner.command(s)
+        if rez:
+          print(rez)

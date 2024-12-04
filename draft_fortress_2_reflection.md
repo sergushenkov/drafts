@@ -1,24 +1,3 @@
-
-
--- Задание 5
-select
-t.task_id,
-t.description
-from Dwarves d
-join Squads s on d.squad_id = s.squad_id and s.name = 'Guardians'
-left join Tasks t on d.dwarf_id = t.assigned_to;
-
--- Задание 6
-select
-d.dwarf_id,
-d.name,
-r.relationship,
-d1.dwarf_id as partner_id,
-d1.name partner_name,
-from Dwarves d
-left join Relationships r on d.dwarf_id = r.dwarf_id
-left join Dwarfes d1 on d1.dwarf_id = r.related_to;
-
 ## Задача 1
 
 Логика одинаковая. Различия:
